@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +10,18 @@
 </head>
 
 <body>
-    <h1>To do lista</h1>
-    <p>Teksti</p>
+
+    <div id="otsikko" class="header"> 
+        <h1>DOM</h1>
+        <h2>To-Do lista</h2>
+        <input type="text" id="teht" placeholder="Lisää tehtävä...">
+        <span onclick="newElement()" class="addBtn">Lisää</span>
+    </div>
+
+    <ul id="lista">
+        <li>Placeholderi</li>
+      </ul>
+
     <script src="scripts/body.js"></script> 
     
 </body>
