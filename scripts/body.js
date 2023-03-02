@@ -1,57 +1,44 @@
+//Haetaan tiedot localStoragesta
+const list = document.querySelector('#list');
+const items = JSON.parse(localStorage.getItem('items')) || [];
 
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
+//Luodaan poistonappula ja funktio siihen
+function displayItems() {
+  list.innerHTML = items.map((item, index) => `
+    <li>
+      ${item}
+      <button class="delete" data-index="${index}">X</button> 
+    </li>
+  `).join('');
 }
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+displayItems();
 
-//Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+const form = document.querySelector('form');
+const input = document.querySelector('#item');
 
-// Tällä scriptillä lisätään uusi tehtävä listan jatkoksi
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("teht").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') { // Jos mitään ei lisätä, seuraa imoitus
-    alert("Kirjoita jotain!");
-  } else {
-    document.getElementById("lista").appendChild(li);
-  }
-  document.getElementById("teht").value = "";
+// Luodaan submit nappula, joka tarkistaa, että tehtävä on vähintään 2 merkkiä pitkä ja onko tehtävä jo ennalta listalla
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const item = input.value.trim();
+  if (item.length < 2) return;
+	if(items.includes(item)) {
+		alert('On jo!')
+		return;
+	}
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
+  items.push(item);
+  localStorage.setItem('items', JSON.stringify(items));
+  input.value = '';
+  displayItems();
+});
+//
+list.addEventListener('click', (event) => {
+	if (!event.target.matches('.delete')) return;
+	const index = event.target.dataset.index;
+	items.splice(index, 1);
+	localStorage.setItem('items', JSON.stringify(items));
+	displayItems();
+  });
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-
+  

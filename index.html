@@ -5,24 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pretty.css">
-    <script src="scripts/head.js"></script> 
+   <!--<script src="scripts/head.js"></script> -->
     <title>DOM-skriptaus</title>
 </head>
 
 <body>
+  <h1>TO-DO List</h1>
+  <form>
+    <input type="text" id="item" placeholder="Lisää tehtävä">
+    <button type="submit" id="add">Lisää</button>
+  </form>
+  <ul id="list"></ul>
 
-    <div id="otsikko" class="header"> 
-        <h1>DOM</h1>
-        <h2>To-Do lista</h2>
-        <input type="text" id="teht" placeholder="Lisää tehtävä...">
-        <span onclick="newElement()" class="addBtn">Lisää</span>
-    </div>
+<script src="scripts/body.js"></script>
 
-    <ul id="lista">
-        <li>Placeholderi</li>
-      </ul>
-
-    <script src="scripts/body.js"></script> 
     
 </body>
 </html>
