@@ -18,9 +18,8 @@ https://github.com/TylerPottsDev/yt-js-todo-2022
 
 TIKO Github
 
-Mitään ei ole suoraan copy-pastettu, käytin tähän tehtävään about 15 tuntia, localStoragen ymmärtämisessä oli ongelmia.
-
-
+Javascriptiä ei ole copypastettu, CSS:ää lainattu w3 schoolsista.
+Käytin tehtävään aikaa varmaan 20-tuntia.
 
 
 

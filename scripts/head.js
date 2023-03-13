@@ -1,1 +1,1 @@
-alert("Aloita listan luominen lisäämällä ensimmäinen tehtävä"); //Pelkkä "hauska" harjoitus/esiteksti.
+alert("Aloita listan luominen lisäämällä ensimmäinen tehtävä"); //Pelkkä harjoitus/esiteksti.
