@@ -16,7 +16,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://github.com/TylerPottsDev/yt-js-todo-2022
 
-TIKO Github
+https://stackoverflow.com/questions/10771117/javascript-variable-less-than-4-characters
+
+TIKO Githubista myös otettu mallia
 
 Javascriptiä ei ole copypastettu, CSS:ää lainattu w3 schoolsista.
 Käytin tehtävään aikaa varmaan 20-tuntia.
