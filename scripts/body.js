@@ -24,9 +24,12 @@ form.addEventListener('submit', (event) => {
   alert("Liian lyhyt!")
   input.style = "background: red";
   return ;
+  } else {
+    input.style = "background: #2195f37";
   }
 	if(items.includes(item)) {
 		alert('On jo!')
+    input.style = "background: red";
 		return;
 	}
 
