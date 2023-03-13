@@ -22,10 +22,10 @@ form.addEventListener('submit', (event) => {
   const item = input.value.trim();
   if (item.length <= 2) {
   alert("Liian lyhyt!")
-  input.style = "background: red";
+  input.style = "background: red"; // Muuttaa inputin tyylin punaiseksi
   return ;
   } else {
-    input.style = "background: #2195f37";
+    input.style = "background: #2195f37"; //Jos täyttää speksit niin muuttuu takaisin normaaliksi
   }
 	if(items.includes(item)) {
 		alert('On jo!')
