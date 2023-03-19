@@ -22,7 +22,7 @@ form.addEventListener('submit', (event) => {
   const item = input.value.trim();
   if (item.length <= 2) {
   alert("Liian lyhyt!")
-  input.style = "background: red"; // Muuttaa inputin tyylin punaiseksi
+  input.style = "background: red"; // Muuttaa inputin tyylin punaiseksi mikäli ei vastaa minimivaatimuksia
   return ;
   } else {
     input.style = "background: #2195f37"; //Jos täyttää speksit niin muuttuu takaisin normaaliksi
@@ -39,7 +39,7 @@ form.addEventListener('submit', (event) => {
   input.value = '';
   displayItems();
 });
-//Poistetaan tieto local storagesta
+//Poistetaan tieto local storagesta 
 list.addEventListener('click', (event) => {
 	if (!event.target.matches('.delete')) return;
 	const index = event.target.dataset.index;

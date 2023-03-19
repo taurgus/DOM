@@ -23,6 +23,10 @@ TIKO Githubista myös otettu mallia
 Javascriptiä ei ole copypastettu, CSS:ää lainattu w3 schoolsista.
 Käytin tehtävään aikaa varmaan 20-tuntia.
 
+Netlify linkki:
+
+https://wonderful-pasca-98659b.netlify.app/
+
 
 
 
