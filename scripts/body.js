@@ -1,8 +1,8 @@
-
+//Luodaan muuttujat list ja items
 const list = document.querySelector('#list');
 const items = JSON.parse(localStorage.getItem('items')) || [];
 
-//Luodaan poistonappula ja funktio siihen
+//Luodaan poistonappula X 
 function displayItems() {
   list.innerHTML = items.map((item, index) => `
     <li>
@@ -18,7 +18,7 @@ const input = document.querySelector('#item');
 
 // Luodaan submit nappula, joka if elsellä tarkistaa, että tehtävä on vähintään 2 merkkiä pitkä ja onko tehtävä jo ennalta listalla
 form.addEventListener('submit', (event) => {
-  event.preventDefault();
+  event.preventDefault(); //Estetään tyhjän taskin lisääminen
   const item = input.value.trim();
   if (item.length <= 2) {
   alert("Liian lyhyt!")
