@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pretty.css">
-   <!--<script src="scripts/head.js"></script> -->
-    <title>DOM-skriptaus</title>
-</head>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List With Local Storage</title>
+    <link rel="stylesheet" href="pretty.css" />
+  </head>
+  <body>
+    <h1>To-Do</h1>
 
-<body> 
-
-  <div class="container">
-      <h1>TO-DO Lista</h1>
-  <form> <!--Luodaan formi joka sisältää uuden taskin lisäämisen-->
-    <input type="text" id="item" placeholder="Lisää tehtävä">
-    <button type="submit" id="add">Lisää</button> <!-- Lisää nappula -->
-  </form>
-  <ul id="list"></ul> <!--Uutta taskia varten luotava ul-->
-  </div>
+    <body>
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Lisää uusi">
+        <button type="submit">Add</button>
+      </form>
+      
+      <ul id="todo-list"></ul>
 
 <script src="scripts/body.js"></script>
 

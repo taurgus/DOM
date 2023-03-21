@@ -1,58 +1,93 @@
-//Luodaan muuttujat list ja items
-const list = document.querySelector('#list');
-const items = JSON.parse(localStorage.getItem('items')) || [];
+const form = document.querySelector('#todo-form');
+const input = document.querySelector('#todo-input');
+const todoList = document.querySelector('#todo-list');
+const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-//Luodaan poistonappula X 
-function displayItems() {
-  list.innerHTML = items.map((item, index) => `
-    <li>
-      ${item}
-      <button class="delete" data-index="${index}">X</button> 
-    </li>
-  `).join('');
-}
-displayItems();
-
-const form = document.querySelector('form');
-const input = document.querySelector('#item');
-
-// Luodaan submit nappula, joka if elsellä tarkistaa, että tehtävä on vähintään 2 merkkiä pitkä ja onko tehtävä jo ennalta listalla
-form.addEventListener('submit', (event) => {
-  event.preventDefault(); //Estetään tyhjän taskin lisääminen
-  const item = input.value.trim();
-  if (item.length <= 2) {
-  alert("Liian lyhyt!")
-  input.style = "background: red"; // Muuttaa inputin tyylin punaiseksi mikäli ei vastaa minimivaatimuksia
-  return ;
-  } else {
-    input.style = "background: #2195f37"; //Jos täyttää speksit niin muuttuu takaisin normaaliksi
-  }
-	if(items.includes(item)) {
-		alert('On jo!')
-    input.style = "background: red";
-		return;
-	}
-
-//Tallennetaan tieto local storageen
-  items.push(item);
-  localStorage.setItem('items', JSON.stringify(items));
-  input.value = '';
-  displayItems();
-});
-//Poistetaan tieto local storagesta 
-list.addEventListener('click', (event) => {
-	if (!event.target.matches('.delete')) return;
-	const index = event.target.dataset.index;
-	items.splice(index, 1);
-	localStorage.setItem('items', JSON.stringify(items));
-	displayItems();
-  });
-
- //Jos tehtävä halutaan merkitä suoritetuksi clickaamalla
-var check = document.querySelector('li');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+// Tehdään uusi taski ja lisätään se listalle
+function createTodoItem(todo) {
+  const li = document.createElement('li');
+  const text = document.createTextNode(todo.text);
+  li.appendChild(text);
   
+
+  // Luodaan poisto ja suoritettu nappulat
+  const completedButton = document.createElement('button');
+  completedButton.innerHTML = 'Completed';
+  completedButton.addEventListener('click', () => {
+    li.classList.toggle('completed');
+    todo.completed = !todo.completed;
+    updateLocalStorage();
+  });
+  li.appendChild(completedButton);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.innerHTML = 'Delete';
+  deleteButton.classList.add('delete-button'); //Luodaan poistonappulan luokka, jotta sitä voi muokata CSS:ssä
+  deleteButton.addEventListener('click', () => {
+    li.remove();
+    const index = todos.indexOf(todo);
+    todos.splice(index, 1);
+    updateLocalStorage();
+  });
+  li.appendChild(deleteButton);
+
+  // Luodaan completed luokka, jos task on suoritettu
+  if (todo.completed) {
+    li.classList.add('completed');
+  }
+
+  todoList.appendChild(li);
+}
+
+// Lisätään uusi taski
+function addTodoItem(event) {
+  event.preventDefault(); //Estetään tyhjä syöttö
+
+  const text = input.value.trim();
+
+  if (!text) {
+    input.style = "color: red";
+    return;
+
+  }
+
+  if(text.length < 3) {
+    alert("Liian lyhyt!")
+    input.style = "color: red"; // Muuttaa inputin tyylin punaiseksi mikäli ei vastaa minimivaatimuksia
+    return ;
+    } else {
+      input.style = "color: #2195f37";
+  }
+
+  // Tarkistetaan löytyykö taski jo listalta ja jos löytyy niin ilmoitus ja värin vaihto
+  if (todos.some(todo => todo.text === text)) {
+    alert('On jo!');
+    input.style = "color: red";
+    return;
+  }
+
+  const todo = {
+    text,
+    completed: false,
+  };
+  todos.push(todo);
+  createTodoItem(todo);
+  updateLocalStorage();
+
+  input.value = '';
+}
+
+// Päivitetään localstorage tilanteen tasalle
+function updateLocalStorage() {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+// Ladataan tiedot localstoragesta sivua avattaessa
+function loadTodoList() {
+  todos.forEach(todo => {
+    createTodoItem(todo);
+  });
+}
+
+form.addEventListener('submit', addTodoItem);
+loadTodoList();

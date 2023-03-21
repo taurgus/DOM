@@ -1,8 +1,38 @@
+li.completed {
+  text-decoration: line-through;
+  background-color: yellowgreen;
+}
+
+li button {
+  margin-left: 50px;
+  align-items: center;
+  }
+
+.todo-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.delete-button {
+  background-color: rgb(255, 70, 70);
+  color: rgb(0, 0, 0);
+  display: inline-block;
+}
+
+.delete-button:hover {
+  background-color: rgb(255, 0, 0);
+  color: rgb(0, 0, 0);
+  border: 20px;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   width: 70%;
+  border-radius: 25px;
 }
 h1 {
   border-radius: 25px;
@@ -11,20 +41,12 @@ h1 {
   text-align: center;
 }
 
-.container {
-  background: #fff;
-  max-width: 600px;
-  width: 100%;
-  display: table;
-  margin: 0 auto;
-  margin-top: 40px;
-
-}
-
 form {
   display: flex;
   justify-content: center;
   margin: 20px 0;
+  border-radius: 50px;
+  padding: 10px 15px;
 
 }
 
@@ -37,8 +59,7 @@ input[type="text"] {
   box-sizing: border-box;
   background-color: #2195f37c;
   color: white;
-  
-}
+  }
 
 button[type="submit"] {
   font-size: 16px;
@@ -48,15 +69,13 @@ button[type="submit"] {
   background-color: #4be424;
   color: #fff;
   cursor: pointer;
-  
-}
+  }
 /* Submit nappulan yläpuolella hiirtä pitäessä napin väri muuttuu vihreäksi */
 button[type="submit"]:hover {
-	background-color: rgb(35, 134, 10);
+  background-color: rgb(35, 134, 10);
   border: 2px;
   color: black;
   }
-
 
 li {
   display: flex;
@@ -66,35 +85,6 @@ li {
   margin: auto;
 }
 
-
 ul li:hover {
-  background: #ddd;
+  background: #3131316d;
 }
-
-ul li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-}
-
-li:last-child {
-  border-bottom: none;
-  margin: auto;
-}
-
-button.delete {
-  margin-left: auto;
-  font-size: 18px;
-  border: none;
-  background-color: transparent;
-  color: rgb(153, 153, 153);
-  cursor: pointer;
-}
-
-button[class="delete"]:hover {
-	background-color: rgb(196, 3, 3);
-  padding: 5px;
-  border: 2px solid black;
-  color: red;
-
-  }
