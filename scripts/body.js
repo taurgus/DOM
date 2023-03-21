@@ -44,14 +44,15 @@ function addTodoItem(event) {
   event.preventDefault(); //Estetään tyhjä syöttö
 
   const text = input.value.trim();
-
+//Jos tekstiä ei löydy, teksti muuttuu punaiseksi
   if (!text) {
+    alert("Lisää jotain!")
     input.style = "color: red";
     return;
 
   }
 
-  if(text.length < 3) {
+  if(text.length < 3) { //Jos syöte on alle 3 merkkiä
     alert("Liian lyhyt!")
     input.style = "color: red"; // Muuttaa inputin tyylin punaiseksi mikäli ei vastaa minimivaatimuksia
     return ;
